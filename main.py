@@ -88,7 +88,7 @@ async def detect(image: UploadFile = File(...)):
             class_name = model.names[cls]
             
             # Assuming your license plate class name is "license_plate"
-            if class_name in ["license_plate", "number_plate", "plate"] and conf > max_conf: 
+            if class_name in ["License_Plate", "number_plate", "plate"] and conf > max_conf: 
                  max_conf = conf
                  best_box = box.xyxy[0].tolist()
                  
@@ -167,3 +167,4 @@ async def detect(image: UploadFile = File(...)):
     except Exception as e:
         print(f"Dual-OCR ALPR Processing Error: {e}")
         return JSONResponse({"plate_text": None, "error": f"Internal server error during ALPR: {str(e)}"}, status_code=500)
+
