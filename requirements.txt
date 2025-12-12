@@ -24,9 +24,10 @@ easyocr
 # --- OCR Engine 2: PaddleOCR ---
 # Note: PaddleOCR relies on the PaddlePaddle deep learning framework.
 # This specifies the standard CPU version.
-paddlepaddle==2.6.0 # Specify a compatible version
+paddlepaddle # Specify a compatible version
 paddleocr
 
 # --- General Utilities (Recommended) ---
 # python-multipart # Required for FastAPI to handle UploadFile (FormData)
+
 
