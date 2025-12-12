@@ -27,7 +27,7 @@ PADDLE_OCR = PaddleOCR(use_angle_cls=False, lang="en")
 app = FastAPI()
 
 # 🔥 Load your YOLO model (supports YOLOv5, v8, v9, v11)
-model = YOLO("best.pt")   # <--- put your model path here
+model = YOLO("best.pt")  # <--- put your model path here
 
 
 def preprocess_for_ocr(cropped_img_bgr):
@@ -167,4 +167,5 @@ async def detect(image: UploadFile = File(...)):
     except Exception as e:
         print(f"Dual-OCR ALPR Processing Error: {e}")
         return JSONResponse({"plate_text": None, "error": f"Internal server error during ALPR: {str(e)}"}, status_code=500)
+
 
