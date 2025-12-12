@@ -1,7 +1,31 @@
+# --- Web Framework and Server ---
 fastapi
-uvicorn
-ultralytics
-opencv-python-headless
-pytesseract
-python-multipart
-numpy
+uvicorn[standard] # The ASGI server to run FastAPI
+
+# --- Core Computer Vision / Image Handling ---
+Pillow # Used by FastAPI to open the UploadFile and by YOLO
+opencv-python # Used for cropping and image manipulation (cv2)
+numpy # Fundamental dependency for all array-based image processing
+
+# --- YOLO Model Dependencies ---
+ultralytics # The YOLO framework (make sure this version supports your 'best.pt' model)
+
+# --- OCR Engine 1: EasyOCR ---
+# Note: EasyOCR relies on PyTorch for its backend.
+# The following lines specify the CPU-only version, which is safer for most cloud deployments
+# (like Render's standard tiers) that don't offer free GPU access.
+# If you ARE using a GPU, you must replace these with the correct CUDA versions.
+# Standard PyTorch (CPU only):
+torch==2.1.0+cpu # Specify a version to ensure compatibility
+torchvision==0.16.0+cpu
+torchaudio==2.1.0+cpu
+easyocr
+
+# --- OCR Engine 2: PaddleOCR ---
+# Note: PaddleOCR relies on the PaddlePaddle deep learning framework.
+# This specifies the standard CPU version.
+paddlepaddle==2.6.0 # Specify a compatible version
+paddleocr
+
+# --- General Utilities (Recommended) ---
+# python-multipart # Required for FastAPI to handle UploadFile (FormData)
